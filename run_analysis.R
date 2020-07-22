@@ -31,5 +31,6 @@ names(subject) <- "Subject"
 cleanData <- cbind(subject, y, allData_mean_std)
 
 #create tiny data set with avg. of each variable for each activity and subject
-TinyData <- aggregate(. ~Subject + Activity, cleanData, mean)
-TinyData <- TinyData[order(TinyData$Subject, TinyData$Activity), ]
+TidyData <- aggregate(. ~Subject + Activity, cleanData, mean)
+TidyData <- TidyData[order(TidyData$Subject, TidyData$Activity), ]
+write.table(TidyData, file = "tidydata.txt")
